@@ -9,8 +9,8 @@ function View() {
   const { firebase } = useContext(FirebaseContext)
   useEffect(() => {
     const { userId } = PostDetails
-    console.log(PostDetails);
     firebase.firestore().collection('users').where('id', '==', userId).get((res) => {
+      console.log(res);
       res.forEach(doc => {
         setUserDetails(doc.data())
       });
@@ -20,16 +20,16 @@ function View() {
     <div className="viewParentDiv">
       <div className="imageShowDiv">
         <img
-          src={PostDetails.url}
+          src={PostDetails?.url}
           alt="IMG"
         />
       </div>
       <div className="rightSection">
         <div className="productDetails">
-          <p>&#x20B9; {PostDetails.price} </p>
-          <span>YAMAHA R15V3</span>
-          <p>Two Wheeler</p>
-          <span>Tue May 04 2021</span>
+          <p>&#x20B9; {PostDetails?.price} </p>
+          <span> {PostDetails?.name}</span>
+          <p> {PostDetails?.category}</p>
+          <span> {PostDetails?.createdAt}</span>
         </div>
         { userDetails && <div className="contactDetails">
           <p>Seller details</p>

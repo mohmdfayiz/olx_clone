@@ -3,7 +3,7 @@ import { useState, useContext } from 'react';
 import { FirebaseContext } from '../../store/Context';
 import Logo from '../../olx-logo.png'
 import './Login.css';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Login() {
   const [email,setEmail] = useState('')
@@ -22,7 +22,7 @@ function Login() {
   return (
     <div>
       <div className="loginParentDiv">
-        <img width="200px" height="200px" src={Logo}></img>
+        <img alt='Logo' width="200px" height="200px" src={Logo}></img>
         <form onSubmit={handleLogin}>
           <label htmlFor="fname">Email</label>
           <br />
@@ -51,7 +51,7 @@ function Login() {
           <br />
           <button>Login</button>
         </form>
-        <a onClick={()=>{history.push('/signup')}}>Signup</a>
+        <Link style={{textDecoration:"none", color:"#002f34"}} to="/signup">Signup</Link>
       </div>
     </div>
   );
